@@ -15,9 +15,9 @@ echo "Вам еще рано работать";
     echo "Неизвестный возраст";
 }
 echo "<hr>";
+echo "ddddddddddddddddddddddddddd";
 
-
-$day = 6;
+$day = 0;
 
 switch ($day) {
     case ($day>=1 && $day<=5):

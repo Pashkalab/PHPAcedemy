@@ -23,7 +23,6 @@ echo "<hr>";
 
 $a = 30.6;
 $b = 20;
-$c = null;
 if ((is_double($a) || is_int($a)) && (is_double($b) || is_int($b))) {
     switch ($a > $b) {
         case true: echo "MAX: " . $a; break;
@@ -80,7 +79,7 @@ foreach($arr as $num) {
 
 echo "<hr>";
 
-$a = 40.5;
+$a = 4.5;
 $b = 25.9999;
 if ($a > $b) :
     echo "MAX: " . $a;
@@ -148,9 +147,11 @@ for($i = 200; $i <= 400; $i++) {
 
 echo "<hr>";
 
-function test($x, $y)
-{
-    return ($y == 0) ? die('Error') : ($x / $y);
-}
 
-echo test(1,0);
+echo "ksdks";
+
+$abc = array(1, 2, 3);
+foreach ($abc as &$item){
+    $item = 2 * $item;
+}
+print_r($abc);
