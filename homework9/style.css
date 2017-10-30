@@ -1,0 +1,38 @@
+.form {
+    margin: 0 auto;
+    width: 300px;
+    background-color: aqua;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.form input, textarea, img {
+    width: 100%;
+    margin-bottom: 10px !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+body {
+    background-color: lightblue !important;
+}
+
+.comment {
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+h3 {
+    margin-top: 10px !important;
+}
+
+.comment p {
+    font-size: 20px;
+}
+

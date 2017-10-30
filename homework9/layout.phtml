@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Добавте кометарий</h1>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="form">
+                <b><?=$message ?></b>
+                <form method='post'>
+                    <input type="text" name="name"  placeholder='Name' value='<?=requestPost('name') ?>' ><br>
+                    <input type="email" name="email"  placeholder='Email' value='<?=requestPost('email') ?>' ><br>
+                    <textarea placeholder='Message...' name="message"><?=requestPost('message') ?></textarea>
+                    <input type="text" name="user_security_number" placeholder='Enter number'>
+                    <input type="hidden" name="security_number" value="<?=md5($securityNumber)?>"/>
+                    <img src="/PHPAcedemy/homework9/captcha.php?number=<?=$securityNumber?>">
+                    <input name="submit" type="submit" value="Submit"/>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+    <h2>Коментарии</h2>
+    <div class="container">
+        <div class="row">
+    <?php foreach ($comments as $comment) : ?>
+
+            <div class='comment' id="<?=$comment['id']?>">
+                <h3><?=$comment['name']?></h3>
+                <a href="?action=delete&amp;id=<?=$comment['id']?>">Удалить</a>
+                <a href="?action=edit&amp;id=<?=$comment['id']?>">Редактировать</a>
+                <br>
+                <p ><?=$comment['message']?></p>
+                <br>
+                <i>Дата добавления: <?=$comment['created'] ?></i>
+                <br>
+            </div>
+
+    <?php endforeach ?>
+
+        </div>
+    </div>
+
+</body>
+</html>

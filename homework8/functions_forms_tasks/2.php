@@ -33,14 +33,20 @@ if ($_POST) {
 function det3($text)
 {
     $arr = array_flip(explode(' ', $text));
-
+print_r($arr);
     foreach ($arr as $word => $length) {
         $arr[$word] = mb_strlen($word);
     }
+    echo "<br>";
+    print_r($arr);
 
     asort($arr);
 
+    echo "<br>";
+    print_r($arr);
+
     $result = array_slice($arr, -3, 3);
+    echo "<br>";
     print_r($result) ;
     $result = array_keys($result);
     return implode(" ", $result);
