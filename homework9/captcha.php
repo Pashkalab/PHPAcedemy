@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $imgX = 120;  // image width
 $imgY = 20;   // image height
 $fontMinSize = 12;  // Min font size
@@ -10,7 +10,8 @@ $imageColor = null;
 $font = null;
 $image = null;
 
-$securityNumber = $_GET['number'];
+//$securityNumber = $_GET['number'];
+$securityNumber = $_SESSION['number'];
 $font = __DIR__ . '/SpicyRice.ttf';
 $image = imagecreate($imgX, $imgY);
 

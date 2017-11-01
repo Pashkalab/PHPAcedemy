@@ -3,6 +3,38 @@
 define('COMMENTS_STORAGE', 'comments.txt');
 define('BAD',[' сука ',' блять ',' хуй ', 'хуй ', ' хуй', ' блять', 'блять ', ' сука', 'сука ']);
 
+function cookieSet($name, $value, $expire = 3600, $path = '/')
+{
+    setcookie($name, $value, time() + $expire, $path);
+}
+function cookieRemove($name)
+{
+    cookieSet($name, '', -1);
+    unset($_COOKIE[$name]);
+}
+function cookieGet($name)
+{
+    return getValue($_COOKIE, $name);
+}
+function setFlash($message)
+{
+    $_SESSION['flash_message'] = $message;
+}
+function getFlash()
+{
+    $message = getValue($_SESSION, 'flash_message');
+    removeSession('flash_message');
+
+    return $message;
+}
+function removeSession($key)
+{
+    if (isset($_SESSION[$key])) {
+        unset($_SESSION[$key]);
+    }
+}
+
+
 function bad_words($comment){
     foreach ($comment as $key=>$value){
         $comment[$key]=str_replace(BAD, ' **** ', $value);
@@ -63,18 +95,6 @@ function deleteComment($id) {
         COMMENTS_STORAGE,
         $str
     );
-}
-
-function editComment($id) {
-    $contents = @file_get_contents(COMMENTS_STORAGE);
-    $comments = @unserialize($contents);
-    $max = max(array_keys($comments))+1;
-    for ($i = 0; $i < $max; $i++) {
-        if ($comments[$i]["id"] == $id) {
-            $_POST['name'] = $comments[$i]["name"];
-        }
-    }
-
 }
 
 function getValue(array $array, $key)
